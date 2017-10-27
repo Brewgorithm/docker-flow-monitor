@@ -2,7 +2,7 @@ import java.text.SimpleDateFormat
 
 pipeline {
   agent {
-    label "test"
+    label "docker"
   }
   options {
     buildDiscarder(logRotator(numToKeepStr: '2'))
