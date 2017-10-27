@@ -15,8 +15,7 @@ pipeline {
           def dateFormat = new SimpleDateFormat("yy.MM.dd")
           currentBuild.displayName = dateFormat.format(new Date()) + "-" + env.BUILD_NUMBER
         }
-        sh "docker image build -t registry.brewgorithm.com/docker-flow-monitor ."
-        // sh "docker image build -t registry.brewgorithm.com/docker-flow-monitor-docs -f Dockerfile.docs ."
+        sh "docker image build -t registry.suggestbeer.com/docker-flow-monitor ."
       }
     }
     stage("release") {
@@ -24,9 +23,9 @@ pipeline {
         branch "master"
       }
       steps {
-        sh "docker tag registry.brewgorithm.com/docker-flow-monitor registry.brewgorithm.com/docker-flow-monitor:${currentBuild.displayName}"
-        sh "docker image push registry.brewgorithm.com/docker-flow-monitor:latest"
-        sh "docker image push registry.brewgorithm.com/docker-flow-monitor:${currentBuild.displayName}"
+        sh "docker tag registry.suggestbeer.com/docker-flow-monitor registry.suggestbeer.com/docker-flow-monitor:${currentBuild.displayName}"
+        sh "docker image push registry.suggestbeer.com/docker-flow-monitor:latest"
+        sh "docker image push registry.suggestbeer.com/docker-flow-monitor:${currentBuild.displayName}"
       }
     }
   }
